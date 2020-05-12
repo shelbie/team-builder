@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-const studentForm = props => {
+const StudentCard = props => {
 
-  const [student, setStudent] = useState({
+  const [card, setCard] = useState({
     name: "",
     email: "",
-    position: ""
+    role: ""
   });
 
   const changeHandler = event => {
-    setStudent({
-      ...student,
+    setCard({
+      ...card,
       [event.target.name]: event.target.value
     });
   };
@@ -19,41 +19,48 @@ const studentForm = props => {
     <form
       onSubmit={event => {
         event.preventDefault();
-        props.addStudent(card);
+        props.addCard(card);
 
-        //this is resetting the form values
-        setStudent({ name: "", email: "", position: "" });
+        setCard({ name: "", email: "", role: "" });
       }}
     >
-      <label htmlFor="title">Name</label>
+      <label htmlFor="name">Name</label>
       <input
-        id="title"
+        id="name"
         type="text"
-        name="title"
-        placeholder="Email"
-        value={card.title}
+        name="name"
+        placeholder="Full Name"
+        value={card.name}
         onChange={changeHandler}
       />
-      <label htmlFor="body">Email</label>
-      <textarea
-        id="body"
-        name="body"
-        value={card.body}
-        placeholder="Type your note here"
+      <label htmlFor="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        value={card.email}
+        placeholder="Email Address"
         onChange={changeHandler}
       />
 
-<label htmlFor="body">Position</label>
-      <textarea
-        id="body"
-        name="body"
-        value={card.body}
-        placeholder="Type your note here"
+<label htmlFor="role">Which role?
+      <select
+        id="role"
+        name="role"
+        value={card.position}
+        placeholder=""
         onChange={changeHandler}
-      />
+
+        >
+          <option value="Backend Engineer">Backend Engineer</option>
+          <option value="Frontend Engineer">Frontend Engineer</option>
+          <option value="Designer">Designer</option>
+          <option value="Web Developer">Web Developer</option>
+          <option value="iOS">iOS</option>
+          <option value="Data Science">Data Science</option>
+      </select></label>
       <button type="submit">Click to Submit!</button>
     </form>
   );
 };
 
-export default studentForm;
+export default StudentCard;

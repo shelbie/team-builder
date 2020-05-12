@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import Form from "./Form"
 import Card from "./Card"
 import './App.css';
@@ -11,7 +10,7 @@ function App() {
   const [cards, setCards] = useState(data);
 
   const addCard = newCard => {
-    setCard([...cards, newCard]);
+    setCards([...cards, newCard]);
   };
 
   return (
@@ -23,5 +22,4 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+export default App;
